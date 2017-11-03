@@ -16,3 +16,8 @@ app.get('/', (req, res) => {
 app.post('/quotes', (req, res) => {
     console.log('req.body')
 })
+
+MongoClient.connect("mongodb://localhost/", (err, db) => {
+  if (err) return console.warn(err)
+  var myDB = db
+});
