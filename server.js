@@ -21,6 +21,7 @@ app.listen(3000, function() {
 app.get('/', (req, res) => {
     db.collection('quotes').find().toArray((err, result) => {
       if (err) return console.log(err)
+      console.log('showing quotes')
       res.render('index.ejs', {quotes: result})
     })
 });
