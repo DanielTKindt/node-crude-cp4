@@ -7,6 +7,7 @@ const app = express();
 var db;
 
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
 
 MongoClient.connect("mongodb://localhost/", (err, database) => {
   if (err) return console.warn(err)
@@ -19,7 +20,7 @@ app.listen(3000, function() {
 
 app.get('/', (req, res) => {
     db.collection('quotes').find().toArray((err, result) => {
-      if (err) return console.warn(err)
+      if (err) return console.log(err)
       res.render('index.ejs', {quotes: result})
     })
 });
